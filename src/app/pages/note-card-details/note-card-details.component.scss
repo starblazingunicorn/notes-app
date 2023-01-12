@@ -1,0 +1,20 @@
+.note-card-details-container{
+    display: flex;
+    flex-direction: column;
+ 
+    padding-top: 50px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    .field{
+        max-width: 50%;
+        padding: 20px;
+    .control{
+        padding: 20px;
+    }
+    input{
+        padding: 20px;
+    }
+    }
+}

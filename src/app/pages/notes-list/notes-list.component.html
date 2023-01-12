@@ -1,1 +1,19 @@
-<p>notes-list works!</p>
+<div class="main-container">
+  <div class="search-bar-container">
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="search" />
+        <span class="icon is-small is-left">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="notes-list">
+   
+    <app-note-card [title]="'test'" [body]="'gggggfffffffffffffffffffffffffff'"></app-note-card>
+    <app-note-card></app-note-card>
+    <app-note-card></app-note-card>
+  </div>
+</div>

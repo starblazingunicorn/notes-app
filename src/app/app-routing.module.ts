@@ -3,14 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NotesListComponent } from './pages/notes-list/notes-list.component';
 import { HomeComponent } from './pages/home/home.component';
-
-const routes: Routes = [
-{path: '', component: HomeComponent, children:[{
-    path:'', component: NotesListComponent
-}
-]}
+import { NoteCardDetailsComponent } from './pages/note-card-details/note-card-details.component';
  
 
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: NotesListComponent,
+      },
+    ],
+  },
+  {path: ':id', component:NoteCardDetailsComponent}
+  
 ];
 
 @NgModule({
