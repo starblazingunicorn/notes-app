@@ -1,4 +1,4 @@
-.note-card-details-container{
+.form-container{
     display: flex;
     flex-direction: column;
  
@@ -8,13 +8,24 @@
     justify-content: center;
 
     .field{
-        max-width: 50%;
+  
         padding: 20px;
     .control{
         padding: 20px;
+      
     }
-    input{
-        padding: 20px;
+   
+    .note-footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
     }
+    input, textarea{
+        &.ng-invalid.ng-touched{
+            border-color: red;
+        }
+
+    }
+   
 }

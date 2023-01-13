@@ -10,6 +10,7 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
 import { SearchComponent } from './components/search/search.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { NoteCardDetailsComponent } from './pages/note-card-details/note-card-details.component';
+import { FormsModule } from '@angular/forms';
  
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { NoteCardDetailsComponent } from './pages/note-card-details/note-card-de
     AddButtonComponent,
     SearchComponent,
     NoteCardDetailsComponent,
+    
   
       
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,23 +1,38 @@
-<div class="note-card-details-container">
-  <input class="input is-medium" type="text" placeholder="Medium input" />
-  <br>
-  <div class="field">
-    <textarea
-      class="textarea is-medium"
-      placeholder="Medium textarea"
-    ></textarea>
+<div class="form-container">
+  <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+    <div class="control">
+      <label class="label">Title</label>
+      <input
+      [(ngModel)]="note.title"
+        class="input is-info"
+        type="text"
+        name="title"
+        required
+        placeholder="title input"
+      />
+    </div>
+
     <br />
-    <button class="button is-success is-outlined">
-      <span class="icon is-small">
-        <i class="fas fa-check"></i>
-      </span>
-      <span>Save</span>
-    </button>
-    <button class="button is-danger is-outlined">
-      <span>Delete</span>
-      <span class="icon is-small">
-        <i class="fas fa-times"></i>
-      </span>
-    </button>
-  </div>
+    <div class="field">
+      <label class="label">Body</label>
+      <textarea
+        class="textarea is-medium"
+        placeholder="Medium textarea"
+        [(ngModel)]="note.body"
+        name="body"
+      ></textarea>
+      <br />
+      <div class="note-footer">
+        <button class="button is-text">
+          <span>Cancel</span>
+        </button>
+        <button class="button is-success " type="submit" [disabled]="!noteForm.valid">
+          <span>Save</span>
+          <span class="icon is-small">
+            <i class="fas fa-check"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
