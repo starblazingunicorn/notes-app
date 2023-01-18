@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
 
@@ -9,19 +9,40 @@ import { NotesService } from 'src/app/shared/notes.service';
   templateUrl: './note-card-details.component.html',
   styleUrls: ['./note-card-details.component.scss'],
 })
-export class NoteCardDetailsComponent {
+export class NoteCardDetailsComponent  implements OnInit{
   note: Note;
-
-  constructor(private notesService: NotesService, private router:Router) {}
+  noteId: number;
+  new: boolean;
+  constructor(
+    private notesService: NotesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit() {
-    this.note = new Note();
+    this.route.params.subscribe((params: Params) => {
+      this.note = new Note();
+      if (params['id']) {
+        this.notesService.get(params['id']).subscribe((note: Note) => {
+          this.note = note;
+        });
+        this.new = false;
+      } else {
+        this.new = true;
+      }
+    })
+    
+ 
+
   }
   onSubmit(form: NgForm) {
-    // console.log(form);
-    this.notesService.add(form.value);
-    this.router.navigateByUrl('/');
+    if (this.new) {
+      this.notesService.add(form.value);
+      this.router.navigateByUrl('/');
+    } else {
+      this.notesService.update(this.noteId, form.value.title, form.value.body);
+    }
   }
-  cancel(){
+  cancel() {
     this.router.navigateByUrl('/');
   }
 }
